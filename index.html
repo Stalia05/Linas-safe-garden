@@ -2,53 +2,642 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Lina – Jazz & Sage Vibes</title>
+    <title>The Safe Garden – by Lina aka Stalia</title>
+
+    <!-- Polices : élégante + fun manuscrite -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --cream: #fdf7ee;
+            --sage-light: #d9e5d5;
+            --sage: #a9c3a6;
+            --sage-dark: #4f6b57;
+            --gold: #c89b3c;
+            --brown: #7b5440;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: "Segoe UI", sans-serif;
-            background-color: #e8efe6; /* sauge clair */
-            color: #2e3b32; /* vert profond */
-            text-align: center;
             margin: 0;
-            padding: 50px 20px;
+            padding: 40px 15px 80px;
+            background-color: var(--cream);
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #273028;
+            overflow-x: hidden;
         }
-        h1 {
-            color: #1d2b22;
-            font-size: 42px;
-            margin-bottom: 10px;
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
-        h2 {
-            font-size: 22px;
-            color: #4a5e52;
+
+        /* HERO */
+
+        header.hero {
+            text-align: center;
             margin-bottom: 40px;
         }
+
+        header.hero span.badge {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--sage-light);
+            color: var(--sage-dark);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header.hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 3.1rem;
+            margin: 0 0 4px;
+            color: #f9f4ea;
+            letter-spacing: 1px;
+            /* effet 3D embossé doré/jazz */
+            background: linear-gradient(135deg, #f9f4ea, #f3d9a4, #c89b3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow:
+                0 1px 0 #b38a33,
+                0 2px 0 #a37b2e,
+                0 3px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        header.hero .subtitle {
+            font-family: "Dancing Script", cursive;
+            font-size: 1.2rem;
+            color: #7a5c3c;
+            margin-bottom: 14px;
+        }
+
+        header.hero p {
+            font-size: 1rem;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.5;
+            color: #4a5a4c;
+        }
+
+        /* Sections */
+
+        section {
+            margin-bottom: 32px;
+        }
+
+        section h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.7rem;
+            margin-bottom: 14px;
+            color: var(--brown);
+        }
+
+        .section-sub {
+            font-size: 0.9rem;
+            color: #66756a;
+            margin-bottom: 18px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        @media (min-width: 720px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .grid-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
         .card {
             background: #ffffff;
             border-radius: 18px;
-            padding: 25px;
-            max-width: 600px;
-            margin: 20px auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 18px 18px 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card.accent-sage {
+            border-left: 4px solid var(--sage);
+        }
+
+        .card.accent-gold {
+            border-left: 4px solid var(--gold);
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--sage-dark);
+        }
+
+        .card p {
+            margin: 4px 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: var(--sage-light);
+            color: var(--sage-dark);
+            margin-bottom: 6px;
+        }
+
+        /* Musique + images artistes */
+
+        .artist-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .artist-image {
+            width: 100%;
+            border-radius: 14px;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .player-wrapper {
+            margin-top: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        /* Rajah corner */
+
+        .rajah-wrapper {
+            display: grid;
+            gap: 18px;
+        }
+
+        @media (min-width: 720px) {
+            .rajah-wrapper {
+                grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            }
+        }
+
+        .rajah-photo {
+            width: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 3px solid var(--sage-light);
+        }
+
+        .tip-list {
+            padding-left: 18px;
+            margin: 6px 0 0;
+            font-size: 0.9rem;
+        }
+
+        .tip-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Thé d’automne */
+
+        .tea-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 14px;
+            align-items: center;
+        }
+
+        @media (min-width: 720px) {
+            .tea-card {
+                grid-template-columns: 140px minmax(0, 1fr);
+            }
+        }
+
+        .tea-illustration {
+            width: 120px;
+            height: 120px;
+            border-radius: 100%;
+            background: radial-gradient(circle at 30% 20%, #fff7e6, #e6c08f);
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .tea-illustration::before {
+            content: "☕";
+            position: absolute;
+            font-size: 2.4rem;
+            top: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tea-illustration::after {
+            content: "🍁";
+            position: absolute;
+            font-size: 1.3rem;
+            top: 18px;
+            right: 30px;
+        }
+
+        .tea-steps {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tea-steps strong {
+            color: var(--brown);
+        }
+
+        /* SafeZone */
+
+        .highlight {
+            background: linear-gradient(120deg, #fbe7c4, #e2f0dd);
+            border-radius: 16px;
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .highlight strong {
+            color: var(--brown);
+        }
+
+        /* Chat */
+
+        .chat-box {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 16px 16px 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .chat-box h3 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            color: var(--sage-dark);
+        }
+
+        .chat-box small {
+            display: block;
+            font-size: 0.75rem;
+            color: #7c8a80;
+            margin-bottom: 10px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+        }
+
+        .field label {
+            color: #5b6a5f;
+        }
+
+        .field input,
+        .field textarea {
+            border-radius: 10px;
+            border: 1px solid #cad5cb;
+            padding: 7px 9px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            resize: vertical;
+        }
+
+        .chat-btn {
+            margin-top: 6px;
+            border: none;
+            border-radius: 999px;
+            padding: 8px 14px;
+            background: var(--sage-dark);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .chat-btn:hover {
+            background: var(--brown);
+        }
+
+        .chat-note {
+            font-size: 0.75rem;
+            color: #7c8a80;
+            margin-top: 6px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 26px;
+            font-size: 0.75rem;
+            color: #7d8a7f;
+        }
+
+        /* Étoiles dorées discrètes */
+
+        .stars {
+            position: fixed;
+            top: -40px;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .stars span {
+            position: absolute;
+            top: -20px;
+            color: #e0b966;
+            font-size: 10px;
+            opacity: 0.7;
+            animation: fall 8s linear infinite;
+        }
+
+        .stars span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .stars span:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .stars span:nth-child(3) { left: 55%; animation-delay: 4s; }
+        .stars span:nth-child(4) { left: 75%; animation-delay: 1s; }
+        .stars span:nth-child(5) { left: 90%; animation-delay: 3s; }
+        .stars span:nth-child(6) { left: 20%; animation-delay: 5s; }
+        .stars span:nth-child(7) { left: 45%; animation-delay: 6s; }
+        .stars span:nth-child(8) { left: 65%; animation-delay: 7s; }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Lina</h1>
-    <h2>Jazz . Sauge . SafeZone+ vibe</h2>
-
-    <div class="card">
-        <p>Bienvenue dans mon petit espace web 🌿</p>
-        <p>Un endroit qui reflète ma douceur, mon univers, et ma créativité.</p>
+    <!-- Étoiles dorées -->
+    <div class="stars">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
     </div>
 
-    <div class="card">
-        <h3>Rajah 🐾</h3>
-        <p>La reine de la maison. Elle mérite sa section rien qu’à elle.</p>
+    <div class="page">
+        <!-- HERO -->
+        <header class="hero">
+            <span class="badge">SafeZone . Jazz . Sauge</span>
+            <h1>The Safe Garden</h1>
+            <div class="subtitle">by Lina aka Stalia</div>
+            <p>
+                Une SafeZone, sans jugement, pour s’évader en automne,  
+                écouter du jazz, parler chats et respirer un peu.
+            </p>
+        </header>
+
+        <!-- JAZZ & SOUL -->
+        <section id="music">
+            <h2>Jazz & Soul Corner 🎷</h2>
+            <p class="section-sub">
+                Mon petit coin pour les soirées d’automne qui ont besoin d’une bande-son.
+            </p>
+
+            <div class="grid grid-3">
+                <!-- Nina -->
+                <div class="card accent-sage artist-card">
+                    <div class="tag">Nina Simone</div>
+                    <img class="artist-image"
+                         src="https://img.youtube.com/vi/ua2k52n_Bvw/hqdefault.jpg"
+                         alt="Nina Simone">
+                    <div class="card-title">“I Put a Spell on You”</div>
+                    <p>Pour marcher comme si la caméra te suivait dans la rue, version film noir.</p>
+                    <div class="player-wrapper">
+                        <iframe width="100%" height="160"
+                            src="https://www.youtube.com/embed/ua2k52n_Bvw"
+                            title="Nina Simone - I Put a Spell on You"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Ray Charles -->
+                <div class="card accent-sage artist-card">
+                    <div class="tag">Ray Charles</div>
+                    <img class="artist-image"
+                         src="https://img.youtube.com/vi/6M_LUm9lVSw/hqdefault.jpg"
+                         alt="Ray Charles">
+                    <div class="card-title">“I Believe to My Soul”</div>
+                    <p>Quand tu veux du groove, de la vérité et un peu de drama dans les paroles.</p>
+                    <div class="player-wrapper">
+                        <iframe width="100%" height="160"
+                            src="https://www.youtube.com/embed/6M_LUm9lVSw"
+                            title="Ray Charles - I Believe To My Soul"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Billie Holiday -->
+                <div class="card accent-sage artist-card">
+                    <div class="tag">Billie Holiday</div>
+                    <img class="artist-image"
+                         src="https://img.youtube.com/vi/2wsrWoY1oPE/hqdefault.jpg"
+                         alt="Billie Holiday">
+                    <div class="card-title">“Autumn in New York”</div>
+                    <p>Pour les soirs où tu te sens main character d’un film qui finit en travelling.</p>
+                    <div class="player-wrapper">
+                        <iframe width="100%" height="160"
+                            src="https://www.youtube.com/embed/2wsrWoY1oPE"
+                            title="Billie Holiday - Autumn in New York"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THÉ D’AUTOMNE -->
+        <section id="tea">
+            <h2>Thé d’automne & slow vibes 🍂</h2>
+            <p class="section-sub">
+                Le petit rituel pour transformer une journée normale en soirée SafeZone.
+            </p>
+
+            <div class="card tea-card accent-gold">
+                <div class="tea-illustration"></div>
+                <div class="tea-steps">
+                    <p><strong>Recette mentale :</strong></p>
+                    <ul class="tip-list">
+                        <li>Une tasse de thé chaud (épices, cannelle ou ce que ton cœur veut).</li>
+                        <li>Une lumière douce (lampe, bougie, guirlande, ce que tu as).</li>
+                        <li>Une playlist jazz/soul en fond très léger.</li>
+                        <li>Un plaid, un carnet, ou juste toi et tes pensées.</li>
+                        <li>Rappel : tu n’es pas obligée d’être productive 24h/24.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RAJAH CORNER -->
+        <section id="rajah">
+            <h2>Rajah’s Corner 🐾</h2>
+            <p class="section-sub">
+                Le coin le plus cute du jardin : dédié à la vraie boss des lieux.
+            </p>
+
+            <div class="rajah-wrapper">
+                <div>
+                    <!-- À remplacer plus tard par une vraie photo de Rajah -->
+                    <img class="rajah-photo"
+                         src="https://placekitten.com/420/280"
+                         alt="Rajah, petit chat royal">
+                </div>
+                <div class="card accent-gold">
+                    <div class="card-title">Qui est Rajah ?</div>
+                    <p>
+                        Rajah, c’est la chatte de Lina : curieuse, observatrice, un peu princesse,
+                        elle suit partout, surveille la porte, choisit ses spots de sieste et
+                        négocie très bien ses sorties comme sa gamelle.
+                    </p>
+                    <p>
+                        Elle adore se faufiler sous les draps, se cacher, se poser près de la chaleur,
+                        et elle sait très bien se faire comprendre quand elle veut qu’on ouvre ou
+                        ferme une porte.
+                    </p>
+
+                    <p style="margin-top:10px; font-weight:600; color:var(--brown);">
+                        Quelques idées pour un chat heureux :
+                    </p>
+                    <ul class="tip-list">
+                        <li>Respecter ses moments de calme (un chat, ce n’est pas une peluche 🐈‍⬛).</li>
+                        <li>Proposer des petits temps de jeu chaque jour (chasse, poursuite, cache-cache…).</li>
+                        <li>Un coin à lui : plaid, panier ou lit bien chaud près d’un endroit qu’il aime.</li>
+                        <li>Eau propre, litière propre, nourriture adaptée à son rythme.</li>
+                        <li>Observer ses signaux : queue, oreilles, miaulements, façon de se coller ou de s’éloigner.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAFEZONE+ EXPLICATION -->
+        <section id="safezone">
+            <h2>SafeZone+, c’est quoi ? 🌿</h2>
+            <p class="section-sub">
+                Parce qu’on a tous besoin d’un endroit où on peut poser son cerveau sans se faire juger.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    <strong>SafeZone+</strong>, c’est l’idée qu’il existe des espaces – réels, numériques
+                    ou imaginaires – où tu peux être toi-même à 100&nbsp;%, sans performance, sans masque.
+                </p>
+                <p>
+                    Ici, c’est un mélange de :
+                </p>
+                <ul class="tip-list">
+                    <li>Jazz et soul pour accompagner les émotions.</li>
+                    <li>Couleurs sauge, crème et touches dorées pour apaiser.</li>
+                    <li>Chats, douceur, humour et un peu de baddie energy.</li>
+                </ul>
+                <p>
+                    The Safe Garden, c’est un jardin mental : tu y viens pour respirer, réfléchir,  
+                    te poser, ou juste traîner sans te sentir “de trop”.
+                </p>
+            </div>
+        </section>
+
+        <!-- FAUX CHAT SAFEZONE -->
+        <section id="chat">
+            <h2>Safe Chat 🧡</h2>
+            <p class="section-sub">
+                Idée de futur espace membres : un endroit pour déposer ce qu’on ressent,
+                sans violence, sans mots qui coupent.
+            </p>
+
+            <div class="chat-box">
+                <h3>Parler, oui. Se blesser, non.</h3>
+                <small>
+                    Démo : ici, l’idée est de filtrer les mots violents ou irrespectueux,
+                    pour garder un espace SafeZone.
+                </small>
+
+                <form onsubmit="return filterMessage(event);">
+                    <div class="field">
+                        <label for="pseudo">Pseudo</label>
+                        <input id="pseudo" name="pseudo" placeholder="Ton petit nom SafeZone">
+                    </div>
+                    <div class="field">
+                        <label for="message">Ton message</label>
+                        <textarea id="message" name="message" rows="3"
+                                  placeholder="Écris ici comme si tu parlais à un ami bienveillant..."></textarea>
+                    </div>
+                    <button class="chat-btn" type="submit">Envoyer (démo)</button>
+                    <div id="chat-feedback" class="chat-note">
+                        Pour l’instant, ce chat est une démo visuelle : les messages ne sont pas enregistrés.
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            The Safe Garden – by Lina aka Stalia • Prototype créé en cours, version jazz & sauge.
+        </footer>
     </div>
 
-    <div class="card">
-        <h3>SafeZone+</h3>
-        <p>Mon univers créatif et apaisant, toujours avec une touche de classe.</p>
-    </div>
+    <!-- Script : filtre de mots (démo locale) -->
+    <script>
+        // Tu peux compléter cette liste plus tard :
+        const bannedWords = ["insulte", "grosmot", "haine"];
+
+        function filterMessage(event) {
+            event.preventDefault();
+            const messageInput = document.getElementById("message");
+            const feedback = document.getElementById("chat-feedback");
+            const text = messageInput.value.toLowerCase();
+
+            const found = bannedWords.find(word => word && text.includes(word.toLowerCase()));
+
+            if (found) {
+                feedback.textContent = "Ce message contient un mot qui ne correspond pas à l’esprit SafeZone+. Essaie de reformuler avec plus de douceur 🤍";
+            } else if (text.trim().length === 0) {
+                feedback.textContent = "Écris quelque chose avant d’envoyer, même une petite phrase.";
+            } else {
+                feedback.textContent = "Merci pour ton message. Dans une vraie version du site, il serait envoyé après vérification 🧡";
+            }
+        }
+    </script>
 </body>
 </html>
